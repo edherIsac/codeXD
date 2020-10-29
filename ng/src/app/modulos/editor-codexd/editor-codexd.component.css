@@ -1,0 +1,11 @@
+/* #my-textarea{
+  width: 100vw - 30px;
+  height: 100vh - 30px;
+  position: relative;
+} */
+
+
+#codigo{
+  width:  calc(100vw - 30px);
+  height: calc(100vh - 100px) ;
+}
