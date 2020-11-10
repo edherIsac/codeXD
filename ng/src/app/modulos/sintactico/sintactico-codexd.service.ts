@@ -33,9 +33,11 @@ export class SintacticoCodexdService {
   analizarSintaxis(arrAservo) {
     this.estado = 1;
     let error = false;
+
+    // Recorremos el codigo optimizado para validar su sintaxis
     for (const letra of arrAservo) {
       const estado = this.nextStatus(letra.simbolo);
-      console.log(letra.simbolo + ' -> ' + estado);
+      // console.log(letra.simbolo + ' -> ' + estado);
 
       if ( estado === 0) {
         error = true;

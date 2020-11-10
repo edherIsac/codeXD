@@ -53,7 +53,7 @@ export class EditorCodexdComponent implements OnInit {
         );
       }
 
-      // console.log(simbolos);
+      console.log(simbolos);
 
       this.sintactico.analizarSintaxis(simbolos);
 

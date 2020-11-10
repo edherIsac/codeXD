@@ -66,14 +66,14 @@ export class LexicoCodexdService {
 
     }
 
-
-
   }
 
+  // Comprobamos si es un numero el caracter entrante
   esNumero(str) {
     const regInteger = /^\d+$/;
     return regInteger.test(str);
   }
+
 
   optimizarCode(str) {
     // const str: string = this.codigoStr;
