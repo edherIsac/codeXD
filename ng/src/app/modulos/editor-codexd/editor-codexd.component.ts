@@ -2,12 +2,13 @@ import { StaticSymbolResolver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { LexicoCodexdService } from '../lexico/lexico-codexd.service';
 import { SintacticoCodexdService } from '../sintactico/sintactico-codexd.service';
+import { SemanticoCodexdService } from '../semantico/semantico-codexd.service'
 
 @Component({
   selector: 'app-editor-codexd',
   templateUrl: './editor-codexd.component.html',
   styleUrls: ['./editor-codexd.component.css'],
-  providers: [LexicoCodexdService, SintacticoCodexdService]
+  providers: [LexicoCodexdService, SintacticoCodexdService, SemanticoCodexdService]
 })
 export class EditorCodexdComponent implements OnInit {
 
@@ -15,7 +16,8 @@ export class EditorCodexdComponent implements OnInit {
 
   constructor(
     private lexico: LexicoCodexdService,
-    private sintactico: SintacticoCodexdService
+    private sintactico: SintacticoCodexdService,
+    private semantico: SemanticoCodexdService
   ) { }
 
   ngOnInit() {
@@ -56,6 +58,7 @@ export class EditorCodexdComponent implements OnInit {
       console.log(simbolos);
 
       this.sintactico.analizarSintaxis(simbolos);
+      this.semantico.analisarSemantica(simbolos);
 
     }
   }
