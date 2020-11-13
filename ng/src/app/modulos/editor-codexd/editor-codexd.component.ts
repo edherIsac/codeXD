@@ -3,21 +3,23 @@ import { Component, OnInit } from '@angular/core';
 import { LexicoCodexdService } from '../lexico/lexico-codexd.service';
 import { SintacticoCodexdService } from '../sintactico/sintactico-codexd.service';
 import { SemanticoCodexdService } from '../semantico/semantico-codexd.service'
+import { CodigoIntermedioCodexdService } from '../Codigo-Intermedio/codigoIntermedio-codexd.service';
 
 @Component({
   selector: 'app-editor-codexd',
   templateUrl: './editor-codexd.component.html',
   styleUrls: ['./editor-codexd.component.css'],
-  providers: [LexicoCodexdService, SintacticoCodexdService, SemanticoCodexdService]
+  providers: [LexicoCodexdService, SintacticoCodexdService, SemanticoCodexdService, CodigoIntermedioCodexdService]
 })
 export class EditorCodexdComponent implements OnInit {
 
-  codigoStr = 'int main(){int a; int b;}';
+  codigoStr = 'int main(){int a=5; int b=7;int c=a+b;}';
 
   constructor(
     private lexico: LexicoCodexdService,
     private sintactico: SintacticoCodexdService,
-    private semantico: SemanticoCodexdService
+    private semantico: SemanticoCodexdService,
+    private codigoIntermedio: CodigoIntermedioCodexdService
   ) { }
 
   ngOnInit() {
@@ -55,10 +57,11 @@ export class EditorCodexdComponent implements OnInit {
         );
       }
 
-      console.log(simbolos);
+      // console.log(simbolos);
 
       this.sintactico.analizarSintaxis(simbolos);
       this.semantico.analisarSemantica(simbolos);
+      this.codigoIntermedio.generarCodigoIntermedio(simbolos);
 
     }
   }
