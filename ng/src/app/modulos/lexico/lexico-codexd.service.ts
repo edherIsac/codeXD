@@ -10,12 +10,12 @@ export class LexicoCodexdService {
   constructor() {
 
     // Primero bucaremos que todos los caracteres pertenescan a nuetro aservo
-    this.alfabeto = 'abcdefghijklmnopqrstuvwxyz1234567890{}();=+ ';
-    this.simbolos = '+{}();=';
+    this.alfabeto = 'abcdefghijklmnopqrstuvwxyz1234567890{}();=* ';
+    this.simbolos = '*{}();=';
 
     this.palabrasReservadas = [
       {
-        id: 1, palabra: 'main', simbolo: '#'
+        id: 1, palabra: 'inic', simbolo: '#'
       },
       {
         id: 2, palabra: 'int', simbolo: '&'
@@ -101,7 +101,7 @@ export class LexicoCodexdService {
         case '=':
           strObj += ' ' + letra + ' ';
           break;
-        case '+':
+        case '*':
           strObj += ' ' + letra + ' ';
           break;
 

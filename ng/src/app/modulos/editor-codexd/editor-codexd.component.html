@@ -6,5 +6,20 @@
         <textarea id="codigo" class="form-control" [(ngModel)]="codigoStr" ></textarea>
       </div>
     </div>
+
+    <div class="col">
+
+      <div class="form-group">
+        <textarea id="codigo1" class="form-control" [(ngModel)]="resultado" ></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-2">
+    <div class="col-md-8 col-md-offset-2">
+      <button type="button" class="btn btn-success" (click)="analizar()">Compilar</button>
+    </div>
+
   </div>
 </div>
+
+

@@ -55,7 +55,7 @@ export class CodigoIntermedioCodexdService {
     }
 
 
-    console.log(this.preCogigoIntr);
+    // console.log(this.preCogigoIntr);
 
     // Almacenamos los cuadruplos que resulten en un array
     const codigoIntermedio = [];
@@ -72,7 +72,15 @@ export class CodigoIntermedioCodexdService {
         codigoIntermedio.push(cuadruplo);
       }
     }
-
+    console.log('Codigo Intermedio');
+    for (const cuadruplo of codigoIntermedio) {
+      let linea = '';
+      for (const item of cuadruplo) {
+        linea += item + '  ';
+      }
+      console.log(linea);
+    }
+    return codigoIntermedio;
   }
 
 
@@ -91,7 +99,7 @@ export class CodigoIntermedioCodexdService {
       for (let i = 2; i < operacion.length; i++) {
         item = operacion[i];
 
-        if (item === '+') {
+        if (item === '*') {
 
           if (cuadruplo[2] === '') {
             cuadruplo[0] = item; // Operador "="
@@ -139,7 +147,7 @@ export class CodigoIntermedioCodexdService {
       resultado.push(cuadruplo);
     }
 
-    console.log(resultado);
+    // console.log(resultado);
 
 
     return resultado;

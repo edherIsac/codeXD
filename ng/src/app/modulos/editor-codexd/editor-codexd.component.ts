@@ -4,6 +4,7 @@ import { LexicoCodexdService } from '../lexico/lexico-codexd.service';
 import { SintacticoCodexdService } from '../sintactico/sintactico-codexd.service';
 import { SemanticoCodexdService } from '../semantico/semantico-codexd.service'
 import { CodigoIntermedioCodexdService } from '../Codigo-Intermedio/codigoIntermedio-codexd.service';
+import { CodigoObjetoService } from '../codigo-objeto/codigo-objeto.service';
 
 @Component({
   selector: 'app-editor-codexd',
@@ -13,16 +14,19 @@ import { CodigoIntermedioCodexdService } from '../Codigo-Intermedio/codigoInterm
 })
 export class EditorCodexdComponent implements OnInit {
 
-  codigoStr = 'int main(){int a=5; int b=7;int c=a+b;}';
+  resultado
+  codigoStr = 'int inic(){\n'+'   int a=2;\n'+'   int b=3;\n'+'   int c=a*b;\n'+'  }'
 
   constructor(
     private lexico: LexicoCodexdService,
     private sintactico: SintacticoCodexdService,
     private semantico: SemanticoCodexdService,
-    private codigoIntermedio: CodigoIntermedioCodexdService
+    private codigoIntermedio: CodigoIntermedioCodexdService,
+    private codigoObjeto: CodigoObjetoService
   ) { }
 
   ngOnInit() {
+    this.resultado='';
   }
 
   analizar() {
@@ -33,6 +37,7 @@ export class EditorCodexdComponent implements OnInit {
       const alfabeto = this.lexico.inAlfabeto(letra);
 
       if (!alfabeto) {
+        this.resultado ='El simbolo ->' + letra + ' no pertenece al alfabeto';
         console.log('El simbolo ->' + letra + ' no pertenece al alfabeto');
         analicisAlfabeto = false;
         break;
@@ -59,9 +64,16 @@ export class EditorCodexdComponent implements OnInit {
 
       // console.log(simbolos);
 
-      this.sintactico.analizarSintaxis(simbolos);
-      this.semantico.analisarSemantica(simbolos);
-      this.codigoIntermedio.generarCodigoIntermedio(simbolos);
+      if(this.sintactico.analizarSintaxis(simbolos)){
+        if(this.semantico.analisarSemantica(simbolos)){
+          const codigoInter = this.codigoIntermedio.generarCodigoIntermedio(simbolos);
+          this.resultado = this.codigoObjeto.generarCodigoObjeto(codigoInter);
+        }else{
+          this.resultado = 'Error Semantico';
+        }
+      }else{
+        this.resultado = 'Error sintactico';
+      };
 
     }
   }

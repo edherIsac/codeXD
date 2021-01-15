@@ -42,10 +42,13 @@ constructor() {
     }
     if(error === true){
       console.log('Error semantico duplicacion de variables');
+      return false;
     }else if(error2 === true){
       console.log('Error semantico estas utilizando una variable que no esta declarada');
+      return false;
     }else{
       console.log('Codigo sin errores semanticos');
+      return true;
     }
   }
 }

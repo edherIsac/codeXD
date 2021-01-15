@@ -6,6 +6,17 @@
 
 
 #codigo{
-  width:  calc(100vw - 30px);
-  height: calc(100vh - 100px) ;
+  width:  calc(50vw - 30px);
+  height: calc(90vh - 100px) ;
+  padding-left: 2px;
+  background-color:rgba(89, 208, 255, 0.747);
+
 }
+
+#codigo1{
+  width:  calc(50vw - 30px);
+  height: calc(90vh - 100px) ;
+  padding-left: 2px;
+  background-color:rgba(89, 208, 255, 0.747);
+}
+

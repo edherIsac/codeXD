@@ -9,7 +9,7 @@ export class SintacticoCodexdService {
 
   constructor() {
 
-    this.simbolos = '&#(){}vn;+=';
+    this.simbolos = '&#(){}vn;*=';
 
     this.tblSintaxis = [];
     this.tblSintaxis.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]); // 0
@@ -47,8 +47,10 @@ export class SintacticoCodexdService {
 
     if (error) {
       console.log('Error de sintaxis');
+      return false;
     } else {
       console.log('Codigo sin errores sintacticos');
+      return true;
     }
   }
 
